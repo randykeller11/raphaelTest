@@ -6120,6 +6120,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eve-raphael@npm:0.5.0":
+  version: 0.5.0
+  resolution: "eve-raphael@npm:0.5.0"
+  checksum: 50a4bde612443563997faedcf2b1b815ad8c132081db3fb6510a297a459ae473d514cf50dfc04783953f060de63a9556c57b8121ecfa28e75204ecc9863f03f0
+  languageName: node
+  linkType: hard
+
 "eventemitter3@npm:^4.0.0":
   version: 4.0.7
   resolution: "eventemitter3@npm:4.0.7"
@@ -8306,8 +8313,10 @@ __metadata:
     "@testing-library/jest-dom": ^5.14.1
     "@testing-library/react": ^13.0.0
     "@testing-library/user-event": ^13.2.1
+    raphael: ^2.3.0
     react: ^18.0.0
     react-dom: ^18.0.0
+    react-raphael: ^0.9.0
     react-scripts: 5.0.1
     react-three-gui: ^0.4.2
     three: ^0.139.2
@@ -10459,6 +10468,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"raphael@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "raphael@npm:2.3.0"
+  dependencies:
+    eve-raphael: 0.5.0
+  checksum: bb8a5f2ecfca610e1726295d4d4cd4050a0f220f8e24b5db0786240478214cdf697445538c8509c34b11d96029cebce2b0bbed2b684d707f77005c1e421042be
+  languageName: node
+  linkType: hard
+
 "raw-body@npm:2.4.3":
   version: 2.4.3
   resolution: "raw-body@npm:2.4.3"
@@ -10582,6 +10600,13 @@ __metadata:
   version: 1.1.0
   resolution: "react-merge-refs@npm:1.1.0"
   checksum: 90884352999002d868ab9f1bcfe3222fb0f2178ed629f1da7e98e5a9b02a2c96b4aa72800db92aabd69d2483211b4be57a2088e89a11a0b660e7ada744d4ddf7
+  languageName: node
+  linkType: hard
+
+"react-raphael@npm:^0.9.0":
+  version: 0.9.0
+  resolution: "react-raphael@npm:0.9.0"
+  checksum: eb08535554c7346e9355f7d5dd0dad21786bf5017be4a8c440fdfde873149723cffa2775251334f596ec6a964542187dcb1bfe2c63c43a02b4cfde302d64d500
   languageName: node
   linkType: hard
 
