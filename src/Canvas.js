@@ -1,11 +1,12 @@
 import { Paper, Line, Set, Circle, Raphael } from "react-raphael";
 import MemoCircle from "./MemoCircle";
 import { useState, useCallback } from "react";
+import UpdatingPath from "./UpdatingPath";
 
 const circleAttr = { stroke: "red", "stroke-width": 20 };
 
 function Canvas() {
-  const [coords, setCoords] = useState([250, 250]);
+  const [dragCoords, setDragCoords] = useState([250, 250]);
   const [dataArray, setDataArray] = useState([
     [150, 250],
     [250, 250],
@@ -26,10 +27,15 @@ function Canvas() {
 
   return (
     <Paper width={1000} height={500}>
+      <UpdatingPath
+        points={dataArray}
+        isDragging={isDragging}
+        dragCoords={dragCoords}
+      />
       {dataArray &&
         dataArray.map((circle, index) => (
           <MemoCircle
-            setCoords={setCoords}
+            setCoords={setDragCoords}
             setIsDragging={setIsDragging}
             updateCircle={updateCircle}
             circlePos={circle}
@@ -38,8 +44,8 @@ function Canvas() {
         ))}
       {isDragging && (
         <Circle
-          x={coords[1][0]}
-          y={coords[1][1]}
+          x={dragCoords[1][0]}
+          y={dragCoords[1][1]}
           r={10}
           attr={circleAttr}
           toBack={true}
