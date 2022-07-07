@@ -1,7 +1,7 @@
 import { Paper, Line, Set, Circle, Raphael } from "react-raphael";
 import React, { useState, useRef, useEffect, useMemo } from "react";
 function MemoCircle(props) {
-  const { setCoords, setIsDragging, setCirclePos, circlePos } = props;
+  const { setCoords, setIsDragging, setCirclePos, circlePos, index } = props;
 
   const circle = {
     attr: { stroke: "red", "stroke-width": 20 },
@@ -14,12 +14,12 @@ function MemoCircle(props) {
   const dragMove = (dx, dy, x, y, e) => {
     console.log({ dx: dx, dy: dy, x: x, y: y, e: e });
     // changeCoords(x, y);
-    setCoords([x, y]);
+    setCoords([index, [x, y]]);
   };
 
   const dragEnd = (e) => {
     setIsDragging(false);
-    setCirclePos([e.x, e.y]);
+    // setCirclePos([e.x, e.y]);
     // console.log(e);
     // console.log(coords);
   };
