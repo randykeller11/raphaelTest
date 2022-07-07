@@ -4,9 +4,10 @@ import { useState, useCallback } from "react";
 import UpdatingPath from "./UpdatingPath";
 
 const circleAttr = { stroke: "red", "stroke-width": 20 };
+const dragCircleAttr = { stroke: "blue", "stroke-width": 20 };
 
 function Canvas() {
-  const [dragCoords, setDragCoords] = useState([250, 250]);
+  const [dragCoords, setDragCoords] = useState([0, [250, 250]]);
   const [dataArray, setDataArray] = useState([
     [150, 250],
     [250, 250],
@@ -24,6 +25,8 @@ function Canvas() {
     },
     [dataArray]
   );
+
+  const targetIndex = dragCoords[0];
 
   return (
     <Paper width={1000} height={500}>
@@ -47,8 +50,17 @@ function Canvas() {
           x={dragCoords[1][0]}
           y={dragCoords[1][1]}
           r={10}
-          attr={circleAttr}
+          attr={dragCircleAttr}
           toBack={true}
+        />
+      )}
+      {isDragging && (
+        <Circle
+          x={dataArray[targetIndex][0]}
+          y={dataArray[targetIndex][1]}
+          r={10}
+          attr={dragCircleAttr}
+          toFront={true}
         />
       )}
     </Paper>

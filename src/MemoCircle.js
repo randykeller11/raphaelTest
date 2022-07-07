@@ -9,6 +9,7 @@ function MemoCircle(props) {
   const dragStart = (x, y, e) => {
     console.log({ x: x, y: y, e: e });
     setIsDragging(true);
+    setCoords([index, [x, y]]);
   };
 
   const dragMove = (dx, dy, x, y, e) => {
