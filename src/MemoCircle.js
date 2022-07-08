@@ -29,7 +29,7 @@ function MemoCircle(props) {
     <Circle
       x={circlePos[0]}
       y={circlePos[1]}
-      r={10}
+      r={1}
       attr={circle.attr}
       toFront={true}
       drag={{

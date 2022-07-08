@@ -12,6 +12,9 @@ function Canvas() {
     [150, 250],
     [250, 250],
     [350, 250],
+    [400, 250],
+    [450, 250],
+    [500, 250],
   ]);
 
   const [isDragging, setIsDragging] = useState(false);
@@ -28,8 +31,19 @@ function Canvas() {
 
   const targetIndex = dragCoords[0];
 
+  const paperContainer = {
+    style: {
+      border: "2px solid red",
+      zIndex: "2",
+      position: "relative",
+      height: "90vh",
+      width: "90vw",
+    },
+    className: "",
+  };
+
   return (
-    <Paper width={1000} height={500}>
+    <Paper width={1000} height={500} container={paperContainer}>
       <UpdatingPath
         points={dataArray}
         isDragging={isDragging}
@@ -49,7 +63,7 @@ function Canvas() {
         <Circle
           x={dragCoords[1][0]}
           y={dragCoords[1][1]}
-          r={10}
+          r={1}
           attr={dragCircleAttr}
           toBack={true}
         />
@@ -58,7 +72,7 @@ function Canvas() {
         <Circle
           x={dataArray[targetIndex][0]}
           y={dataArray[targetIndex][1]}
-          r={10}
+          r={1}
           attr={dragCircleAttr}
           toFront={true}
         />
