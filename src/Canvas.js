@@ -7,15 +7,17 @@ const circleAttr = { stroke: "red", "stroke-width": 20 };
 const dragCircleAttr = { stroke: "blue", "stroke-width": 20 };
 
 function Canvas() {
-  const [dragCoords, setDragCoords] = useState([0, [250, 250]]);
+  const [dragCoords, setDragCoords] = useState([0, [0.25, 0.25]]);
   const [dataArray, setDataArray] = useState([
-    [150, 250],
-    [250, 250],
-    [350, 250],
-    [400, 250],
-    [450, 250],
-    [500, 250],
+    [0.15, 0.25],
+    [0.25, 0.25],
+    [0.35, 0.25],
+    [0.4, 0.25],
+    [0.45, 0.25],
+    [0.5, 0.25],
   ]);
+
+  const [zoomFactor, setZoomFactor] = useState(1000);
 
   const [isDragging, setIsDragging] = useState(false);
 
@@ -42,12 +44,20 @@ function Canvas() {
     className: "",
   };
 
+  const calculateZoom = (coords) => {
+    let newX = coords[0] * zoomFactor;
+    let newY = coords[1] * zoomFactor;
+    // console.log([newX, newY]);
+    return [newX, newY];
+  };
+
   return (
     <Paper width={1000} height={500} container={paperContainer}>
       <UpdatingPath
         points={dataArray}
         isDragging={isDragging}
         dragCoords={dragCoords}
+        zoomFactor={zoomFactor}
       />
       {dataArray &&
         dataArray.map((circle, index) => (
@@ -55,14 +65,15 @@ function Canvas() {
             setCoords={setDragCoords}
             setIsDragging={setIsDragging}
             updateCircle={updateCircle}
-            circlePos={circle}
+            circlePos={calculateZoom(circle)}
+            zoomFactor={zoomFactor}
             index={index}
           />
         ))}
       {isDragging && (
         <Circle
-          x={dragCoords[1][0]}
-          y={dragCoords[1][1]}
+          x={dragCoords[1][0] * zoomFactor}
+          y={dragCoords[1][1] * zoomFactor}
           r={1}
           attr={dragCircleAttr}
           toBack={true}
@@ -70,8 +81,8 @@ function Canvas() {
       )}
       {isDragging && (
         <Circle
-          x={dataArray[targetIndex][0]}
-          y={dataArray[targetIndex][1]}
+          x={dataArray[targetIndex][0] * zoomFactor}
+          y={dataArray[targetIndex][1] * zoomFactor}
           r={1}
           attr={dragCircleAttr}
           toFront={true}
